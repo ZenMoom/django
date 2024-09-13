@@ -1,0 +1,66 @@
+1. 가상환경 생성
+python -m venv venv
+
+-m  : module
+venv : 가상환경
+venv : 가상환경의 디렉토리 명
+
+회사에 django 버전 4를 쓰고있다. (가상환경 - django 4)
+내가 집에서 공부하고있는 django 버전 5 를 쓰고있다. (가상환경 - django 5)
+버전 충돌!!
+가상환경 만드는 이유는 버전 충돌 방지!!
+---> 독립적인 개발환경
+
+2. 가상환경 활성화
+source venv/Scripts/activate
+2-1. 비활성화
+deactivate
+
+3. 가상환경에 django 설치
+pip install django
+
+4. pip ugrade
+python -m pip install --ugrade pip
+
+5. 의존성 파일 생성 
+pip freeze > requirements.txt
+
+의문 : 우리는 django만 설치했지, 나머지 패키지는 설치전 적이 없다.
+django가 이 나머지 패키지들에 의존하고 있다. ---> 의존성
+즉, django라는 패키지를 사용하기위해서는 반드시 이 나머지 패키지들이 필요하다.
+
+6. django-admin startproject firstpjt .
+
+.을 붙이고 안붙이고 차이는 manage.py의 위치 차이(편의성의 엄청 차이가 난다)
+
+7. python manage.py runserver
+
+8. python manage.py migrate
+
+9. 앱생성
+python manage.py startapp articles
+app은 프로젝트에서 파생되었다. 그래서 프로젝트 생성할 때 만들어진 manage.py
+
+10. 앱을 생성하면 바로 settings.py에 등록해준다!!!!! 별다섯개!!!!
+
+11. Language_code 와 time_zone 바꾸고
+
+12. url 등록
+# from 경로 import 파이썬 파일을 읽어오겠다
+from articles import views
+
+path('homepage/', views.index) # index 함수로 접근하겠다.
+
+13. views.py 에 함수를 작성
+
+def index(request) : 
+    return render(request, 'articles/index.html')
+
+14. articles 디렉토리에 templates 안에 articles 디렉토리 생성
+    ---> index.html 파일 생성
+
+15. .gitignore
+gitignore.io 사이트 django 검색 복사 붙여넣기 ---> .gitignore 에
+
+16. 만약 복습을 위해 clone 했을 시
+---> pip install -r requirements.txt 시 모두 install 가능
